@@ -1,0 +1,20 @@
+Package managers:
+Til Java: Cradle, Maven, ant? 
+Til ???: Node/Npm (Node Package Manager)
+Til python: Pip,
+Til Operating system:  Homebrew
+Til C#: Newget 
+
+
+
+Maven             vs            npm
+pom.xml                         package.json
+
+dependencies                    dependencies
+lifecycles (build, etc)         scripts
+
+Meta information                Meta information
+
+runtime/java version            
+author name, version            
+

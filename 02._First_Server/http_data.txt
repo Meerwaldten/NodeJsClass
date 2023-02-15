@@ -1,0 +1,15 @@
+anatomy of an URL
+
+http://google.com/kickdinosaur/:id?size=1200
+
+http:// = protocol: Kan være HTTP eller HTTPS. 
+google.com/ = Domain
+/kickdinosaur = Endpoint
+:id = Path variable
+?size=1200 = query string / path / parametre
+
+
+
+
+
+Søg efter "Anatomy of an URL" for at finde bedre og mere i dybden. 
