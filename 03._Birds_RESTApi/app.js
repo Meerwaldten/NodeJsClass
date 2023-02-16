@@ -1,3 +1,4 @@
+const { query } = require("express");
 const express = require("express");
 const app = express();
 
@@ -25,14 +26,10 @@ app.get("/birds", (req, res) => {
 });
 
 app.get("/birds/:id", (req, res) => {
-    let id = req.params['id'];
-    res.send({
-        message: 
-        `You have chosen: ${birds[id].name}`
-    })
-})
-
-
+    const id = Number(req.params.id);
+    const birdById = birds.find((bird) => bird.id === id);
+    res.json(birdById)
+});
 
 
 
