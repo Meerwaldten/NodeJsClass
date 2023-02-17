@@ -8,7 +8,7 @@ const rocks = [
 
 // loop methods: map, filter, find, reduce, sort, forEach.
 
-console.log( { ...rocks[0] } );
+//console.log( { ...rocks[0] } );
 
 
 const rocksAgedOneyear = rocks.map(rock => ({...rock, age: rock.age+1}));

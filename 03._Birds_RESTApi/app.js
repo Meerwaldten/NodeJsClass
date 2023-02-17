@@ -24,10 +24,30 @@ app.get("/birds/:id", (req, res) => {
     //const id = Number(req.params.id); 
     //const bird = birds.find((bird) => bird.id === id);
     //res.json(bird);
-
     const bird = birds.find((bird) => bird.id === Number(req.params.id));
     res.send({data: bird});
 });
+
+
+app.post("/birds", (req, res) => {
+
+})
+
+app.put("/birds/:id", (req, res) => {
+
+})
+
+
+app.patch("/birds/:id", (req, res) => {
+
+})
+
+app.delete("/birds/:id", (req, res) => {
+
+})
+
+
+
 
 
 
