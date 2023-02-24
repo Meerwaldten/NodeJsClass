@@ -55,4 +55,22 @@ app.post("/package", (req, res) => {
 });
 
 
+app.get("/time", (req, res) => {
+    res.send({ 
+        timeUTC: new Date(),
+        timeLocal: Date(),
+        unixTimestamp: Date.now()
+    });
+});
+
+app.get("/time/day", (req, res) => {
+    res.send({ data: undefined });
+});
+
+app.get("/time/month", (req, res) => {
+
+    res.send({ data: undefined });
+});
+
+
 app.listen(8080);
