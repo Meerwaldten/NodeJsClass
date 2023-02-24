@@ -35,28 +35,41 @@ app.post("/birds", (req, res) => {
     const newBird = {id: generateId(), name: birdName};
     birds.push(newBird);
     res.send({ data: newBird});
-})
+});
 
 app.put("/birds/:id", (req, res) => {
     const bird = birds.find((bird) => bird.id ===Number(req.params.id));
     const newBirdName = req.body.name;
     bird.name = newBirdName;
     res.json(bird);
-})
+});
 
-
+/*
 app.patch("/birds/:id", (req, res) => {
     const bird = birds.find((bird) => bird.id ===Number(req.params.id));
     const newBirdName = req.body.name;
     bird.name = newBirdName;
     res.json(bird);
-})
+});
+*/
+
+app.patch("/birds/:id", (req, res) => {
+    const foundIndex = birds.findIndex(bird => bird.id === Number(req.params.id));
+    if (foundIndex === -1){
+        res.status(404).send({ message: `No bird found with that id ${req.params.id}`});
+    } else {
+        const foundBird = birds[foundIndex];
+        const birdToPatch = {...foundBird, ...req.body, id: foundBird.id};
+        birds[foundBird] = birdToPatch;
+        res.send({ data: birdToPatch});
+    }
+});
 
 app.delete("/birds/:id", (req, res) => {
     const idToRemove = req.params.id;
     birds.splice(idToRemove, 1);
     res.json(birds);
-})
+});
 
 
 
