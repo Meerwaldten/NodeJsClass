@@ -4,7 +4,7 @@ const app = express();
 app.use(express.static("public"));
 
 
-app.get("/", (req, res) => {
+app.get("/frontpage", (req, res) => {
     res.sendFile(__dirname + "/public/frontpage/frontpage.html");
 });
 
