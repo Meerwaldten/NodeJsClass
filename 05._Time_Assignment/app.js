@@ -9,7 +9,7 @@ app.get("/", (req, res) => {
 });
 
 
-/*
+
 const PORT = 8080;
 app.listen(PORT, (error) => {
     if(error) {
@@ -18,4 +18,6 @@ app.listen(PORT, (error) => {
     }
     console.log("Server is running on port:", PORT);
 });
-*/
+
+
+module.exports = app;
