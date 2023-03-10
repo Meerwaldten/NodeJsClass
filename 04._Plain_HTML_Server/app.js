@@ -18,9 +18,6 @@ app.get("/tanks", (req, res) => {
     res.sendFile(__dirname + "/public/tanks/tanks.html");
 });
 
-app.get("/api/tanks", (req, res) => {
-    res.send({ data: tanks});
-});
 
 app.get("/visitors", (req, res) => {
     res.sendFile(__dirname + "/public/visitors/visitors.html");
@@ -33,6 +30,9 @@ app.get("/guards", (req, res) => {
 
 // APIs
 
+app.get("/api/tanks", (req, res) => {
+    res.send({ data: getTanks()});
+});
 
 app.get("/api/visitors", (req, res) => {
     res.send({ data: visitorCount })
@@ -42,8 +42,12 @@ app.put("/api/visitors", (req, res) => {
     res.send({ data: ++visitorCount })
 });
 
-
-
+app.get("/api/guards/", (req, res) => {
+    if (req.query.passport === "theskyisblue"){
+        return res.redirect("/api/tanks");
+    }
+    res.send({ message: "Wrong passport."});
+});
 
 
 
@@ -52,6 +56,6 @@ app.listen(PORT, (error) => {
     if(error) {
         console.log(error)
         return;
-    }
+    };
     console.log("Server is running on port:", PORT);
 });
