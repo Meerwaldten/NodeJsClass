@@ -2,16 +2,13 @@ const express = require("express");
 const app = express();
 
 app.use(express.static("public")); //Kaldes at "serving static files"
+const { getTanks, addTank } = require("./util/tanks.js")
 
-const tanks = [
-    { name: "Leopard Tank", nationality: "German"},
-    { name: "Tiger", nationality: "German", year: 1943},
-    { name: "Abrams", version: "M1"}
-];
+// Imports ^
 
 let visitorCount = 0;
 
-
+// Pages
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/public/frontpage/frontpage.html");
@@ -29,15 +26,23 @@ app.get("/visitors", (req, res) => {
     res.sendFile(__dirname + "/public/visitors/visitors.html");
 });
 
+app.get("/guards", (req, res) => {
+    res.sendFile(__dirname + "/public/guards/guards.html");
+});
+
+
+// APIs
+
 
 app.get("/api/visitors", (req, res) => {
     res.send({ data: visitorCount })
-})
-
+});
 
 app.put("/api/visitors", (req, res) => {
     res.send({ data: ++visitorCount })
-})
+});
+
+
 
 
 
