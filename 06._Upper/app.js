@@ -1,27 +1,21 @@
 import express from "express";
 const app = express();
 
-import renderPage from "./util/templateEngine.js";
+import templateEngine from "./util/templateEngine.js";
 
 app.use(express.static("public"));
 
-//import {getJoke} from "./util/jokes.js";;
 
-//Paths 
+// "Paths" -> Constructed page
 
-const frontpagePath = "./public/pages/frontpage/frontpage.html";
-const jokesPath = "public/pages/jokes/jokes.html";
-const IRLQuestsPath = "public/pages/IRLQuests/IRLQuests.html";
-
-// Constructed Pages
-const frontpagePage = renderPage(frontpagePath, {
+const frontpage = templateEngine.readPage("./public/pages/frontpage/frontpage.html");
+const frontpagePage = templateEngine.renderPage(frontpage, {
     tabTitle: "Upper | Welcome"
 });
-const jokesPage = renderPage(jokesPath, {
-    tabTitle: "Jokes | Best jokes on the web",
-    cssLink: `<link rel="stylesheet" href="/pages/jokes/jokes.css">`
-});
-const IRLQuestsPage = renderPage(IRLQuestsPath, {
+
+
+const IRLQuests = templateEngine.readPage("./public/pages/IRLQuests/IRLQuests.html");
+const IRLQuestsPage = templateEngine.renderPage(IRLQuests, {
     tabTitle: "IRLQuests | New Quests for you!"
 });
 
@@ -36,8 +30,22 @@ app.get("/IRLQuests", (req, res) => {
     res.send(IRLQuestsPage);
 });
 
-app.get("/jokes", (req, res) => {
+import getJoke from "./util/jokes.js";
+
+app.get("/jokes", async (req, res) => {
+    /*
+    const jokesPage = templateEngine.renderJokePage();
+    res.send(templateEngine.renderJokePage());
+    */
+    const joke = await getJoke();  
+    const jokes = templateEngine.readPage("./public/pages/jokes/jokes.html")
+    .replace("$JOKE", JSON.stringify(joke));
+    const jokesPage = templateEngine.renderPage(jokes, {
+    tabTitle: "Jokes | Best jokes on the web",
+    cssLink: `<link rel="stylesheet" href="/pages/jokes/jokes.css">`
+    });
     res.send(jokesPage);
+
 });
 
 

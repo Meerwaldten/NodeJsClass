@@ -1,3 +1,6 @@
+// Nodemon commands
+nodemon -ext html, js app.js
+
 
 //Components
 const navbar = fs.readFileSync("public/components/navbar/navbar.html").toString();
@@ -21,3 +24,23 @@ res.send(navbar + frontpagePage + footer);
 //Gamle imports
 import fs from "fs";
 import path from "path";
+
+
+//Inject script i footer
+<Script>
+    const data = $DATA;
+    console.log(data);
+</Script>
+
+.replace("$DATA", JSON.stringify(myArray))
+
+//Client side rendering
+<script>
+                const joke = $JOKE;
+                if(joke.delivery){
+                        document.getElementById("joke").innerText = joke.setup + joke.delivery;
+                }else {
+                        document.getElementById("joke").innerText = joke.joke;
+                }
+                console.log(joke);
+        </script>

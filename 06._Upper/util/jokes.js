@@ -2,8 +2,8 @@ import Sentiment from "sentiment";
 const sentiment = new Sentiment();
 
 async function getJoke() {
-    const url = "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit";
-    const response = await fetch(url);
+    const URL = "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit";
+    const response = await fetch(URL);
     const result = await response.json();
     
     const jokeToAnalyze = result.joke || `${result.setup} ${result.delivery}`;
@@ -17,6 +17,4 @@ async function getJoke() {
  }
 
  
-export default {
-    getJoke
-};
+export default getJoke;
