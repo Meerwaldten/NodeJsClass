@@ -1,0 +1,23 @@
+
+//Components
+const navbar = fs.readFileSync("public/components/navbar/navbar.html").toString();
+const footer = fs.readFileSync("public/components/footer/footer.html").toString();
+
+
+// Pages
+const frontpage = fs.readFileSync("public/pages/frontpage/frontpage.html").toString();
+const IRLQuests = fs.readFileSync("public/pages/IRLQuests/IRLQuests.html").toString();
+const jokes = fs.readFileSync("public/pages/jokes/jokes.html").toString();
+
+// Constructed pages
+const frontpagePage = navbar + frontpage + footer;
+const IRLQuestsPage = navbar + IRLQuests + footer;
+const jokesPage = navbar + jokes + footer;
+
+// Gammel måde at sende på
+res.sendFile(path.resolve("public/pages/frontpage/frontpage.html"));
+res.send(navbar + frontpagePage + footer);
+
+//Gamle imports
+import fs from "fs";
+import path from "path";

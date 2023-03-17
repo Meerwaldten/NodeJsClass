@@ -1,25 +1,43 @@
 import express from "express";
 const app = express();
 
-import path from "path";
+import renderPage from "./util/templateEngine.js";
 
 app.use(express.static("public"));
 
-import jokes from "./util/jokes.js";
-console.log(jokes.getJoke());
-console.log(jokes);
+//import {getJoke} from "./util/jokes.js";;
+
+//Paths 
+
+const frontpagePath = "./public/pages/frontpage/frontpage.html";
+const jokesPath = "public/pages/jokes/jokes.html";
+const IRLQuestsPath = "public/pages/IRLQuests/IRLQuests.html";
+
+// Constructed Pages
+const frontpagePage = renderPage(frontpagePath, {
+    tabTitle: "Upper | Welcome"
+});
+const jokesPage = renderPage(jokesPath, {
+    tabTitle: "Jokes | Best jokes on the web",
+    cssLink: `<link rel="stylesheet" href="/pages/jokes/jokes.css">`
+});
+const IRLQuestsPage = renderPage(IRLQuestsPath, {
+    tabTitle: "IRLQuests | New Quests for you!"
+});
+
+
 
 
 app.get("/", (req, res) => {
-    res.sendFile(path.resolve("public/pages/frontpage/frontpage.html"));
+    res.send(frontpagePage);
 });
 
 app.get("/IRLQuests", (req, res) => {
-    res.sendFile(path.resolve("public/pages/IRLQuests/IRLQuests.html"));
+    res.send(IRLQuestsPage);
 });
 
 app.get("/jokes", (req, res) => {
-    res.sendFile(path.resolve("public/pages/jokes/jokes.html"));
+    res.send(jokesPage);
 });
 
 
@@ -34,7 +52,6 @@ const PORT = 8080;
 app.listen(PORT, (error) => {
     if(error) {
         console.log(error)
-        return;
-    }
+        return;}
     console.log("Server is running on port: ", PORT);
 });
