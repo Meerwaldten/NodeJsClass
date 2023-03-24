@@ -64,7 +64,11 @@
     "vary": "^1.1.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cross-dev": "cross-env PORT=9090 ENV=DEV nodemon app.js",
+    "cross-prod": "cross-env PORT=80 node app.js",
+    "dev": "PORT=8080 nodemon app.js",
+    "prod": "PORT=80 node app.js"
   },
   "repository": {
     "type": "git",
@@ -84,5 +88,8 @@
   "bugs": {
     "url": "https://github.com/Meerwaldten/NodeJsClass/issues"
   },
-  "homepage": "https://github.com/Meerwaldten/NodeJsClass#readme"
+  "homepage": "https://github.com/Meerwaldten/NodeJsClass#readme",
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
 }

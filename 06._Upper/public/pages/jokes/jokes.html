@@ -1,12 +1,11 @@
 
-        <h1>Joke of the day: Asger "johnzando" Birk</h1>
         
         <h3 id="joke"></h3>
 
         <script>
                 const joke = $JOKE;
                 if(joke.delivery){
-                        document.getElementById("joke").innerText = joke.setup + joke.delivery;
+                        document.getElementById("joke").innerText = joke.setup + "\n" + joke.delivery;
                 }else {
                         document.getElementById("joke").innerText = joke.joke;
                 }

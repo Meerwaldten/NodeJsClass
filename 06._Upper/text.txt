@@ -44,3 +44,9 @@ import path from "path";
                 }
                 console.log(joke);
         </script>
+
+
+// Noget med at sørge for det er et tlf nr
+
+<label>Phone number</label><br>
+    <input type="tel" placeholder="Your phone number"><br><br>
