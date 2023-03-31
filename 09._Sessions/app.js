@@ -2,7 +2,7 @@ import express from "express";
 const app = express();
 
 import cors from "cors";
-app.use(cors);
+app.use(cors());
 
 import session from "express-session";
 
@@ -23,6 +23,8 @@ app.get("/gotham/:name", (req, res) => {
   req.session.hobby = req.query.hobby;
   res.send({ message: `Hi ${req.session.name}`});
 });
+
+// http://localhost:8080/gotham/Zando?hobby=dota
 
 app.get("/gotham", (req, res) => {
   res.send({ message: `I remember you ${req.session.name} and your hobby is ${req.session.hobby}`});
