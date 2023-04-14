@@ -1,0 +1,15 @@
+{
+  "name": "10._middleware",
+  "version": "1.0.0",
+  "description": "Middleware",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "Test"
+  },
+  "author": "Mikkel",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

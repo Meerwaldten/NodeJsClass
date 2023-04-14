@@ -5,6 +5,13 @@ const app = express();
 app.use(express.static("public")); //Kaldes at "serving static files"
 const { getTanks, addTank } = require("./util/tanks.js")
 
+const tankRouter = require("./routers/tankRouter.js");
+const guardRouter = require("./routers/guardRouter.js");
+const visitorRouter = require("./routers/visitorRouter.js");
+app.use(tankRouter);
+app.use(guardRouter);
+app.use(visitorRouter);
+
 // Imports ^
 
 let visitorCount = 0;
@@ -36,7 +43,7 @@ app.get("/proxy", (req, res) => {
 
 
 // APIs
-
+/*
 app.get("/api/tanks", (req, res) => {
     res.send({ data: getTanks()});
 });
@@ -55,6 +62,7 @@ app.get("/api/guards/", (req, res) => {
     }
     res.send({ message: "Wrong passport."});
 });
+*/
 
 
 
